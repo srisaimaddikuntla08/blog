@@ -7,6 +7,8 @@ import Dashboard from './pages/admin/Dashboard'
 import Layout from './pages/admin/Layout'
 import Listblog from './pages/admin/Listblog'
 import Login from "./components/admin/Login"
+import 'quill/dist/quill.snow.css'
+
 
 
 
