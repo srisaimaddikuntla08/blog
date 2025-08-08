@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 8108
 app.use(cors())
 app.use(express.json())
 
+
+//database connection
 await connectDB()
 
 app.get("/",(req,res)=>{
