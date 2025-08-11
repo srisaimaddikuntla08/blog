@@ -21,14 +21,14 @@ const Listblog = () => {
 
         < div className='relative  max-w-4xl h-4/5 overflow-x-auto mt-3 shadow rounded-lg scrollbar-hide bg-white'>
   <table className='w-full text-sm text-gray-700'>
-    <thead className='text-xs text-gray-600 uppercase bg-gray-100'>
+    <thead className='text-xs text-gray-600 uppercase bg-gray-100 '>
       <tr>
         <th scope='col' className='px-2 py-4 xl:px-6 text-left'>#</th>
         <th scope='col' className='px-2 py-4 text-left'>Blog Title</th>
         <th scope='col' className='px-2 py-4 max-sm:hidden text-left'>Date</th>
         <th scope='col' className='px-2 py-4 max-sm:hidden text-left'>Status</th>
         <th scope='col' className='px-2 py-4 text-left'>Actions</th>
-      </tr>
+      </tr> 
     </thead> 
     <tbody className='divide-y divide-gray-200'>
       {blogs.map((blog, index) => (
