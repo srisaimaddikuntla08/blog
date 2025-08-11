@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState({
     blogs: 0,
     comments: 0,
-    Drafts: 0,
+    drafts:0,
     recentBlogs: []
   });
 
@@ -47,7 +47,7 @@ const Dashboard = () => {
         <div className='flex items-center gap-4 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all'>
           <img src={assets.dashboard_icon_3} alt="dashicon1" />
           <div>
-            <p>{dashboardData.Drafts}</p>
+            <p>{dashboardData.drafts}</p>
             <p className='text-gray-400 font-light'>Drafts</p>
           </div>
         </div>

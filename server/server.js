@@ -1,7 +1,9 @@
-import express from 'express'
+import express, { urlencoded } from 'express'
 import 'dotenv/config'
 import cors from 'cors'
 import connectDB from './config/db.js'
+import adminRouter from './routes/adminRoutes.js'
+import blogRouter from './routes/blogRoute.js'
 
 const app = express()
 const PORT = process.env.PORT || 8108
@@ -12,12 +14,17 @@ app.use(cors())
 app.use(express.json())
 
 
+
 //database connection
 await connectDB()
 
 app.get("/",(req,res)=>{
     res.send("server is in work")
 })
+app.use("/api/admin",adminRouter);
+
+app.use("/api/blog",blogRouter);
+
 
 
 
