@@ -8,7 +8,7 @@ const blogRouter = express.Router()
 blogRouter.post("/addBlog",upload.single('image'),authentication,addBlog);
 blogRouter.get("/all",getAllBlogs);
 blogRouter.get("/:blogId",getBlogById);
-blogRouter.delete("/delete",authentication,deleteBlogById);
+blogRouter.post("/delete",authentication,deleteBlogById);
 blogRouter.post("/toggle-publish",authentication,togglePublish);
 
 
