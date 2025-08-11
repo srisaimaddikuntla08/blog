@@ -10,6 +10,7 @@ const Listblog = () => {
     setBlogs(blog_data)
   }
 
+  //
   useEffect(()=>{
       fetchBlogs();
   },[])
