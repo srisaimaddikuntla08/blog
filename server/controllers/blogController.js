@@ -41,7 +41,8 @@ export const addBlog = async (req,res)=>{
                 subTitle,
                 description,
                 image,
-                isPublished
+                isPublished,
+                category
             })
 
             return res.json({success : true, message : "blog added successfully"})
@@ -134,6 +135,9 @@ export const getBlogComments = async (req,res)=>{
         
             }   
 }
+
+
+
 
 
 
