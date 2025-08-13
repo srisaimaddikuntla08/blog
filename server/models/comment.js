@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
-import { type } from "os";
 
 const commentSchema = new mongoose.Schema(
   {
     blog:{
-        type:mongoose.Schema.Types.ObjectId, ref:'blog', required :true
+        type:mongoose.Schema.Types.ObjectId, ref:'Blog', required :true
     },
     name:{
         type: String,
