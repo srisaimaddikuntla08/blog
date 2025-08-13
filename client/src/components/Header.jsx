@@ -2,9 +2,22 @@ import React from 'react'
 import { assets } from '../assets/assets'
 import  SplitText  from './Splittext.jsx'
 import { useAppContext } from '../AppContext.jsx'
+import { useRef } from 'react'
 
 const Header = () => {
   const {input,setInput} = useAppContext()
+  const inputRef = useRef();
+
+
+  const onSubmitHandler = async (e)=>{
+    e.preventDefault();
+    setInput(inputRef.current.value)
+  }
+
+  const onClear = ()=>{
+    setInput('')
+    inputRef.current.value = ''
+  }
 
 
   return (
@@ -41,11 +54,14 @@ const Header = () => {
         This is your space to think out loud, to share what matters,and to write without filters. Wheather 
         it's one word or thousand, your story starts ! </p>
 
-        <form  className='flex justify-between  max-w-lg max-sm:scale-75 mx-auto border border-gray-600  overflow-hidden bg-white rounded ' >
-            <input type="text"  placeholder='Search for blogs' required className='w-full pl-4 outline-none' onChange={(e)=>setInput(e.target.value)} />
+        <form onSubmit={onSubmitHandler} className='flex justify-between  max-w-lg max-sm:scale-75 mx-auto border border-gray-600  overflow-hidden bg-white rounded ' >
+            <input ref={inputRef} type="text"  placeholder='Search for blogs' required className='w-full pl-4 outline-none'  />
             <button className='bg-primary text-white px-8 py-2 m-1.5 rounded hover:scale-105 transition-all curso-pointer '>Search</button>
         </form>
 
+      <div className='text-center mt-3'>
+       {input &&( <button onClick={onClear} className='border font-light text-xs py-1 px-3 rounded-sm shadow-custom-sm cursor-pointer'>clear Search</button>)}
+      </div>
         
     </div>
   )
