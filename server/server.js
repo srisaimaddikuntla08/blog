@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8108
 //middlewares
 app.use(cors(
     {
-  origin: 'http://localhost:5173', // or '*'
+  origin: "https://netblog.vercel.app", // or '*'
   credentials: true
 }
 ))
