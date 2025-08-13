@@ -2,6 +2,7 @@ import fs from 'fs'
 import imagekit from '../config/imagekit.js';
 import Blog from '../models/blog.js';
 import Comment from '../models/comment.js';
+import main from '../config/gemini.js';
 
 
 export const addBlog = async (req,res)=>{
@@ -92,7 +93,7 @@ export const deleteBlogById = async (req,res)=>{
                
                  res.json({success : true, message:"Blog deleted successfully" })
             }catch(error){
-             res.json({success:false,messae:error.message})
+             res.json({success:false,message:error.message})
         
             }   
 }
@@ -116,10 +117,10 @@ export const togglePublish = async (req,res)=>{
 export const addComment = async (req,res)=>{
             try{
                 const {blog,name,content} = req.body
-                await Comment.create({blog,name,content})
+                await Comment.create({blog,name,content,isApproved:false})
                 res.json({success : true, message:"Comment added for review" })
             }catch(error){
-             res.json({success:false,messae:error.message})
+             res.json({success:false,message:error.message})
         
             }   
 }
@@ -127,14 +128,25 @@ export const addComment = async (req,res)=>{
 
 export const getBlogComments = async (req,res)=>{
             try{
-                const {blogId} = req.body
-                const comments = await Comment.find({blog:blogId,isApproved:true}).sort({createdAt:-1})
+                const {blog} = req.body
+                const comments = await Comment.find({blog:blog,isApproved:true}).sort({createdAt:-1})
                 res.json({success : true, comments })
             }catch(error){
              res.json({success:false,message:error.message})
         
             }   
 }
+
+
+export const generate = async (req,res)=>{
+        try{
+            const {prompt} = req.body
+           const content =  await main(prompt +'Generate a blog content for this prompt in 10 lines')
+           return res.json({success:true,content})
+        }catch(error){
+            return res.json({success:false,message:error.message})
+        }
+}       
 
 
 

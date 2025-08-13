@@ -1,11 +1,11 @@
 import express from 'express'
-import { addBlog, addComment, deleteBlogById, getAllBlogs, getBlogById, getBlogComments, togglePublish } from '../controllers/blogController.js'
+import { addBlog, addComment, deleteBlogById, generate, getAllBlogs, getBlogById, getBlogComments, togglePublish } from '../controllers/blogController.js'
 import upload from '../middlewares/multer.js';
 import { authentication } from '../middlewares/auth.js';
 const blogRouter = express.Router()
 
 
-blogRouter.post("/addBlog",upload.single('image'),authentication,addBlog);
+blogRouter.post("/add",upload.single('image'),authentication,addBlog);
 blogRouter.get("/all",getAllBlogs);
 blogRouter.get("/:blogId",getBlogById);
 blogRouter.post("/delete",authentication,deleteBlogById);
@@ -14,7 +14,10 @@ blogRouter.post("/toggle-publish",authentication,togglePublish);
 
 //for comments
 blogRouter.post("/addComment",addComment);
-blogRouter.get("/comments",getBlogComments);
+blogRouter.post("/comments",getBlogComments);
+
+
+blogRouter.post("/generate",authentication,generate)
 
 
 

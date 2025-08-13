@@ -13,6 +13,8 @@ export const adminLogin = async (req,res)=>{
             return res.json({success : false, message:"Invalid credentials"})
         }
 
+        
+
         const token =jwt.sign({email},process.env.JWT_SECRET);
          return res.json({success:true,token})
 
